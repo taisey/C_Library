@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 22:41:59 by taichika          #+#    #+#             */
-/*   Updated: 2021/04/09 10:03:10 by taichika         ###   ########.fr       */
+/*   Created: 2021/04/09 10:42:56 by taichika          #+#    #+#             */
+/*   Updated: 2021/04/09 10:51:45 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-size_t	strlcat(char *dst, char *src, size_t dstsize)
+int strncmp(const char *s1, const char *s2, size_t n)
 {
 	int i;
-	int dst_len;
-	int src_len;
+	int c_n;
 
 	i = 0;
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	while (dstsize - (dst_len + i) - 1 > 0)
+	c_n = 0;
+	while(s1[i] != '\0' && s2[i] != '\0' && c_n < n)
 	{
-		dst[dst_len + i] = src[i];
 		i++;
+		c_n++;
 	}
-	if (dstsize != 0 && dst_len < dstsize)
-		dst[i] = '\0';
-	return (dst_len + src_len);
+	return (s1[i] - s2[i]);
 }

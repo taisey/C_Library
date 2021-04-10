@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 22:41:59 by taichika          #+#    #+#             */
-/*   Updated: 2021/04/09 10:03:10 by taichika         ###   ########.fr       */
+/*   Created: 2021/04/09 10:51:52 by taichika          #+#    #+#             */
+/*   Updated: 2021/04/10 11:29:09 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-size_t	strlcat(char *dst, char *src, size_t dstsize)
+int atoi_r(const char *str, int tmp_num)
 {
-	int i;
-	int dst_len;
-	int src_len;
+	if (*str == '\0')
+		return (tmp_num);
+	tmp_num = tmp_num * 10 + *(str) - '0';
+	return (atoi_r(str + 1, tmp_num));
+}
 
-	i = 0;
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	while (dstsize - (dst_len + i) - 1 > 0)
-	{
-		dst[dst_len + i] = src[i];
-		i++;
-	}
-	if (dstsize != 0 && dst_len < dstsize)
-		dst[i] = '\0';
-	return (dst_len + src_len);
+int check_prefix(const char *str)
+{
+	while(*str == '')
+}
+
+int atoi(const char *str)
+{
+	
+}
+
+
+int main(void)
+{
+	printf("%d\n", atoi_r("12345",0));
 }
