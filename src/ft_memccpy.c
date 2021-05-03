@@ -6,23 +6,27 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:52:10 by taichika          #+#    #+#             */
-/*   Updated: 2021/04/08 22:34:42 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/01 14:34:41 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while (i < n)
 	{
-		((char*)dst)[i] = ((char*)src)[i];
+		((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
+		if (((unsigned char*)src)[i] == (unsigned char)c)
+		{
+			((unsigned char*)dst)[i] = c;
+			return ((unsigned char*)dst + i + 1);
+		}
 		i++;
-		if (((char*)src)[i] == c)
-			return (src + i);
 	}
 	return (NULL);
 }

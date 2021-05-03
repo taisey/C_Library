@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 22:35:32 by taichika          #+#    #+#             */
-/*   Updated: 2021/05/01 16:11:42 by taichika         ###   ########.fr       */
+/*   Created: 2021/04/11 11:53:11 by taichika          #+#    #+#             */
+/*   Updated: 2021/05/01 16:34:33 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t i;
+	char			*ans;
+	int				ans_len;
+	unsigned int	i;
 
 	i = 0;
-	if (dst == NULL)
-		return (-1);
-	if (dstsize <= 0)
-		return ((ft_strlen(src)));
-	while (i < (dstsize - 1) && src[i] != '\0')
+	if (s == NULL)
+		return (NULL);
+	ans_len = ft_strlen(s);
+	ans = malloc(ans_len + 1);
+	if (ans == 0)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		dst[i] = src[i];
+		ans[i] = f(i, s[i]);
 		i++;
 	}
-	if (dstsize > 0)
-		dst[i] = '\0';
-	return (ft_strlen(src));
+	ans[i] = '\0';
+	return (ans);
 }

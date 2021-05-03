@@ -6,28 +6,26 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 10:13:54 by taichika          #+#    #+#             */
-/*   Updated: 2021/04/09 10:19:57 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/01 14:43:32 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
 	int s_len;
 
 	s_len = ft_strlen(s);
-	i = 0;
-
 	if (c == '\0')
-		return (s + s_len - 1);
+		return ((char *)s + s_len);
 	s_len -= 1;
-	while (s_len > 0)
+	while (s_len >= 0)
 	{
-		if (((unsigned char*)s)[s_len] == (unsigned char)c)
-			return (s + s_len);
-		i++;
+		if (((char*)s)[s_len] == (char)c)
+			return ((char *)s + s_len);
+		s_len--;
 	}
 	return (NULL);
 }

@@ -6,16 +6,19 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:00:42 by taichika          #+#    #+#             */
-/*   Updated: 2021/04/08 22:34:25 by taichika         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:51:49 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void	*ft_memrcpy(void *dst, const void *src, size_t n)
 {
-	int i;
+	size_t i;
 
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{
