@@ -6,7 +6,7 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 11:19:22 by taichika          #+#    #+#             */
-/*   Updated: 2021/05/01 16:13:07 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/04 09:19:36 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int		ft_min(int a, int b)
+int	ft_min(int a, int b)
 {
 	if (a < b)
 		return (a);
@@ -36,7 +36,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		ans = malloc(1);
 		return (ans);
 	}
-	ans = (char*)malloc(ft_min(s_len - start, len) + 1);
+	ans = (char *)malloc(ft_min(s_len - start, len) + 1);
 	if (ans == NULL)
 		return (NULL);
 	while (s[i + start] != '\0' && (size_t)i < len)

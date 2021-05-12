@@ -6,7 +6,7 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 20:27:51 by taichika          #+#    #+#             */
-/*   Updated: 2021/04/21 14:46:35 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/04 09:18:40 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*s != '\0')

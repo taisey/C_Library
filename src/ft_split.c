@@ -6,7 +6,7 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:24:08 by taichika          #+#    #+#             */
-/*   Updated: 2021/05/03 12:46:43 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/04 10:00:55 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ char	*pass_nocharset(char *str, char c)
 	return (str);
 }
 
-int		count_charset(char *str, char c)
+int	count_charset(char *str, char c)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = 0;
 	while (*str != '\0'
@@ -54,21 +54,31 @@ int		count_charset(char *str, char c)
 	return (cnt);
 }
 
-void	write_split(char **ans, int ans_len, char const *str, char c)
+char	**write_split(char **ans, int ans_len, char const *str, char c)
 {
 	char	*head;
 	char	*tail;
 	int		i;
+	char	*tmp;
 
 	i = 0;
-	head = pass_charset((char*)str, c);
+	head = pass_charset((char *)str, c);
 	while (i < ans_len)
 	{
 		tail = pass_nocharset(head, c);
-		ans[i++] = ft_strndup(head, tail - head);
+		tmp = ft_strndup(head, tail - head);
+		if (tmp == NULL)
+		{
+			while (i > 0)
+				free(ans[--i]);
+			free(ans);
+			return (NULL);
+		}
+		ans[i++] = tmp;
 		head = pass_charset(tail, c);
 	}
 	ans[i] = NULL;
+	return (ans);
 }
 
 char	**ft_split(char const *str, char c)
@@ -78,16 +88,17 @@ char	**ft_split(char const *str, char c)
 
 	if (str == NULL)
 		return (NULL);
-	ans_len = count_charset((char*)str, c);
+	ans_len = count_charset((char *)str, c);
 	if (ans_len == 0)
 	{
-		ans = (char**)malloc(sizeof(char*) * 1);
+		ans = (char **)malloc(sizeof(char *) * 1);
+		if (ans == 0)
+			return (NULL);
 		ans[0] = (void *)0;
 		return (ans);
 	}
-	ans = (char**)malloc(sizeof(char*) * (ans_len + 1));
+	ans = (char **)malloc(sizeof(char *) * (ans_len + 1));
 	if (ans == 0)
 		return (NULL);
-	write_split(ans, ans_len, str, c);
-	return (ans);
+	return (write_split(ans, ans_len, str, c));
 }

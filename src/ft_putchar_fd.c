@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 10:13:54 by taichika          #+#    #+#             */
-/*   Updated: 2021/05/04 09:19:17 by taichika         ###   ########.fr       */
+/*   Created: 2021/04/11 13:17:51 by taichika          #+#    #+#             */
+/*   Updated: 2021/05/03 16:43:40 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	s_len;
-
-	s_len = ft_strlen(s);
-	if (c == '\0')
-		return ((char *)s + s_len);
-	s_len -= 1;
-	while (s_len >= 0)
-	{
-		if (((char *)s)[s_len] == (char)c)
-			return ((char *)s + s_len);
-		s_len--;
-	}
-	return (NULL);
+	write(fd, &c, 1);
 }

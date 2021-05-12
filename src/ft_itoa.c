@@ -6,16 +6,16 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 17:54:52 by taichika          #+#    #+#             */
-/*   Updated: 2021/05/01 16:33:14 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/04 09:21:17 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-int		ft_count_digit(int n)
+int	ft_count_digit(int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	n /= 10;
@@ -29,8 +29,8 @@ int		ft_count_digit(int n)
 
 char	*ft_rec_itoa(long n, char *ans)
 {
-	long div;
-	long mod;
+	long	div;
+	long	mod;
 
 	if (n < 0)
 	{

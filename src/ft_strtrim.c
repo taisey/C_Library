@@ -6,7 +6,7 @@
 /*   By: taichika <taichika@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 17:25:45 by taichika          #+#    #+#             */
-/*   Updated: 2021/05/01 16:14:02 by taichika         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:03:10 by taichika         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strndup(char *src, int n)
 	int		i;
 
 	i = 0;
-	dest = (char*)malloc(sizeof(char) * n + 1);
+	dest = (char *)malloc(sizeof(char) * n + 1);
 	if (dest == NULL)
 		return (NULL);
 	output = dest;
@@ -37,8 +37,8 @@ char	*ft_strndup(char *src, int n)
 
 char	*ft_strsetcmp(char *s1, char const *set)
 {
-	int set_len;
-	int i;
+	int	set_len;
+	int	i;
 	int	flag;
 
 	i = 0;
@@ -101,8 +101,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (s1 == NULL)
 		return (NULL);
-	set_len = ft_strlen(set);
 	s1_len = ft_strlen(s1);
+	if (set == NULL)
+		return (ft_strndup((char *)s1, s1_len));
+	set_len = ft_strlen(set);
+	if (set_len == 0)
+		return (ft_strndup((char *)s1, s1_len));
 	head = ft_strsetcmp((char *)s1, set);
 	tail = ft_strsetcmp_r(s1, set);
 	if (head > tail)
