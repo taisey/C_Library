@@ -1,2 +1,2 @@
 # C_Library
-re-code functions in C standard libraries such as memcpy, strlen, atoi and so on
+C言語のスタンダードライブラリを実装しました。 memcpy, strlen, atoi and so on
